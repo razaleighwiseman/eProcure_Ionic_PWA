@@ -29,3 +29,18 @@ self.toolbox.router.any('/*', self.toolbox.fastest);
 // for any other requests go to the network, cache,
 // and then only use that cached resource if your user goes offline
 self.toolbox.router.default = self.toolbox.networkFirst;
+
+
+//testing
+self.addEventListener('install', (event) =>{
+  console.log("service worker installing",event)
+});
+
+self.addEventListener('activate', (event) =>{
+  console.log("service worker activating",event);
+  self.clients.claim();
+})
+
+self.addEventListener('fetch',(event)=>{
+  console.log('service worker fetching something...',event);
+})

@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ServiceProvider } from '../../providers/service/service';
+import { regexValidators } from '../validators/validator';
+
+import {User} from '../../models/user.model';
 
 /**
  * Generated class for the SignupPage page.
@@ -16,8 +21,52 @@ import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
 })
 export class SignupPage {
 
+  signUpForm: FormGroup;
+  model: any = {};
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public splitPane: SplitPaneProvider,
-    public menuCtrl: MenuController) {
+    public menuCtrl: MenuController, public _form: FormBuilder, public _data: ServiceProvider) {
+
+    this.signUpForm = this._form.group({
+      email: [
+        '', Validators.compose([
+          Validators.pattern(regexValidators.email),
+          Validators.required
+        ])
+      ],
+      password: [
+        '', Validators.compose([
+          Validators.pattern(regexValidators.password),
+          Validators.required
+        ])
+      ],
+      name: [
+        '', Validators.compose([
+          Validators.required
+        ])
+      ],
+      nric: [
+        '', Validators.compose([
+          Validators.required
+        ])
+      ],
+      contact: [
+        '', Validators.compose([
+          Validators.required
+        ])
+      ],
+
+    });
+  }
+
+  createAcc(){
+    console.log(this.model);
+    this._data.createUserHttp(this.model).subscribe(resp =>{
+      console.log(resp);
+      if (resp['success']) {
+        this.navCtrl.setRoot('LoginPage');
+      }
+    });
   }
 
   ionViewDidLoad() {
@@ -35,5 +84,6 @@ export class SignupPage {
     this.splitPane.setSplitPane(true);
     this.menuCtrl.swipeEnable(true);
   }
+
 
 }

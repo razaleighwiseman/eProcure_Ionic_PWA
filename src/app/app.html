@@ -1,7 +1,9 @@
+<link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
+<script src="/node_modules/material-design-lite/material.min.js"></script>
 <ion-split-pane [when]="splitPane.getSplitPane()">
-  <ion-menu [content]="content">
+  <ion-menu [content]="content" width="335">
     <ion-header>
-      <ion-toolbar  color="primary">
+      <ion-toolbar >
         <ion-title></ion-title>
       </ion-toolbar>
     </ion-header>
@@ -12,6 +14,12 @@
           {{p.title}}
         </button>
       </ion-list>
+      <ion-list>
+          <button ion-item menuClose (click)="logOut()">
+            <ion-icon item-start name="md-power"></ion-icon>
+            Log Out
+          </button>
+        </ion-list>
     </ion-content>
   </ion-menu>
 

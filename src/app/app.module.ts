@@ -8,8 +8,6 @@ import {HttpModule} from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,9 +18,6 @@ import { SplitPaneProvider } from '../providers/split-pane/split-pane';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage,
-    LoginPage,
     PopoverPage
   ],
   imports: [
@@ -34,9 +29,6 @@ import { SplitPaneProvider } from '../providers/split-pane/split-pane';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage,
-    LoginPage,
     PopoverPage
   ],
   providers: [

@@ -1,29 +1,32 @@
 import { Component } from '@angular/core';
-import { NavController, PopoverController } from 'ionic-angular';
-import { PopoverPage } from '../popover/popover';
-import { ServiceProvider } from '../../providers/service/service';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
 
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController,public popoverCtrl: PopoverController,public _data: ServiceProvider) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams,public splitPane: SplitPaneProvider) {
   }
 
-  presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverPage);
-    popover.present({
-      ev: myEvent
-    });
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
+  }
+  ionViewWillEnter() {
+    // Disable the split plane in this page
+    this.splitPane.setSplitPane(true);
+    
   }
 
-  logOut(){
-    this._data.userLogOutHttp().subscribe(resp=>{
-      console.log(resp);
-    })
-  }
 
 }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { ServiceProvider } from '../../providers/service/service';
-import { HomePage } from '../home/home';
 import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { regexValidators } from '../validators/validator';
@@ -25,20 +24,20 @@ export class LoginPage {
     public menuCtrl: MenuController,
     public _form: FormBuilder) {
 
-      this.credentialsForm = this._form.group({
-        email: [
-          '', Validators.compose([
-            Validators.pattern(regexValidators.email),
-            Validators.required
-          ])
-        ],
-        password: [
-          '', Validators.compose([
-            Validators.pattern(regexValidators.password),
-            Validators.required
-          ])
-        ],
-      });
+    this.credentialsForm = this._form.group({
+      email: [
+        '', Validators.compose([
+          Validators.pattern(regexValidators.email),
+          Validators.required
+        ])
+      ],
+      password: [
+        '', Validators.compose([
+          Validators.pattern(regexValidators.password),
+          Validators.required
+        ])
+      ],
+    });
   }
 
   ionViewDidLoad() {
@@ -66,32 +65,32 @@ export class LoginPage {
     this._data.getUserCredentials().then(resp => {
       console.log(resp)
       if (resp) {
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot('HomePage');
       }
     });
   }
 
   logIn() {
     if (this.credentialsForm.valid) {
-     console.log( this.credentialsForm.controls['email'].value);
-    }
-    // console.log(this.email, this.password)
-    // this._data.userSignInHttp({ 'email': this.email, 'password': this.password }).subscribe(resp => {
-    //   if (resp) {
-    //     console.log(resp['token']);
-    //     this._data.storeUserCredentials(resp['token'])
-    //     this.navCtrl.setRoot(HomePage);
-    //   }
-    // }, err => {
-    //   this.error = err.error.msg;
+      var email =this.credentialsForm.controls['email'].value;
+      var password = this.credentialsForm.controls['password'].value;
+      console.log(email, password)
+      this._data.userSignInHttp({ 'email': email, 'password': password }).subscribe(resp => {
+        if (resp) {
+          console.log(resp['token']);
+          this._data.storeUserCredentials(resp['token'])
+          this.navCtrl.setRoot('HomePage');
+        }
+      }, err => {
+        this.error = err.error.msg;
 
-    // });
+      });
+    }
 
   }
-
+  
   goToLogin(): void {
     console.log("login")
     this.navCtrl.push('SignupPage')
   }
-
 }

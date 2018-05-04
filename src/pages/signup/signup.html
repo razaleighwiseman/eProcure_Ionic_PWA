@@ -1,16 +1,45 @@
-<!--
-  Generated template for the SignupPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-
-</ion-header>
-
-
-<ion-content padding>
-  <p>login</p>
-
+<ion-content>
+  <ion-grid fixed no-padding>
+    <ion-row align-items-stretch>
+      <ion-col col-12 col-md-6 align-self-stretch align-self-center>
+        <ion-card>
+          <form [formGroup]="signUpForm" >
+            <div class="login-panel">
+              <ion-list inset>
+                <ion-item>
+                  <ion-label floating>E-mail</ion-label>
+                  <ion-input type="email"  [(ngModel)]="model.email" [formControl]="signUpForm.controls['email']"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Name</ion-label>
+                  <ion-input type="text" [(ngModel)]="model.name" [formControl]="signUpForm.controls['name']"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>NRIC/Passport</ion-label>
+                  <ion-input type="text"[(ngModel)]="model.nric" [formControl]="signUpForm.controls['nric']" ></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Contact No.</ion-label>
+                  <ion-input type="text" [(ngModel)]="model.contact" [formControl]="signUpForm.controls['contact']"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Password</ion-label>
+                  <ion-input type="password" [(ngModel)]="model.password" [formControl]="signUpForm.controls['password']"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Confirm Password</ion-label>
+                  <ion-input type="password" [(ngModel)]="model.password" [formControl]="signUpForm.controls['password']"></ion-input>
+                </ion-item>
+              </ion-list>
+              <div padding>
+                <button ion-button block color="mytheme" [disabled]="!signUpForm.valid" (click)="createAcc()">
+                  Create Account
+                </button>
+              </div>
+            </div>
+          </form>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,17 +1,16 @@
 <ion-content>
-  <div class="splash-info">
-    <div class="splash-logo"></div>
-  </div>
   <ion-grid fixed no-padding>
     <ion-row align-items-stretch>
       <ion-col col-12 offset-md-4 col-md-4>
         <ion-card>
+          <ion-card-header class="eprocure-logo">
+          </ion-card-header>
           <form [formGroup]="credentialsForm">
             <div class="login-panel" padding>
               <ion-list inset>
                 <ion-item>
                   <ion-label floating>E-mail</ion-label>
-                  <ion-input type="email" [formControl]="credentialsForm.controls['email']"></ion-input>
+                  <ion-input type="email" [formControl]="credentialsForm.controls['email']" ></ion-input>
                 </ion-item>
                 <div *ngIf="!credentialsForm.controls.email.valid && credentialsForm.controls.email.dirty" class="validator-error">
                   Please enter a valid email.
@@ -21,8 +20,7 @@
                   <ion-input type="password" [formControl]="credentialsForm.controls['password']"></ion-input>
                 </ion-item>
                 <div *ngIf="!credentialsForm.controls.password.valid && credentialsForm.controls.password.dirty" class="validator-error">
-                    Passwords should be at least 8 characters long and contain one number,
-                    one character and one special character.
+                  Passwords should be at least 8 characters long and contain one number, one character and one special character.
                 </div>
               </ion-list>
               <span>
@@ -38,7 +36,6 @@
               </div>
             </div>
           </form>
-
         </ion-card>
       </ion-col>
     </ion-row>
