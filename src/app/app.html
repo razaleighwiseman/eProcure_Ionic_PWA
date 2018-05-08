@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
 <script src="/node_modules/material-design-lite/material.min.js"></script>
 <ion-split-pane [when]="splitPane.getSplitPane()">
-  <ion-menu [content]="content" width="335">
+  <ion-menu [content]="content">
     <ion-header>
       <ion-toolbar >
         <ion-title></ion-title>
@@ -9,6 +9,9 @@
     </ion-header>
 
     <ion-content>
+      <div class='userInfo'>
+        <p>welcome user</p>
+      </div>
       <ion-list>
         <button menuClose ion-item *ngFor="let p of pages" [color]="isActive(p)" (click)="openPage(p)">
           {{p.title}}
@@ -16,7 +19,7 @@
       </ion-list>
       <ion-list>
           <button ion-item menuClose (click)="logOut()">
-            <ion-icon item-start name="md-power"></ion-icon>
+            <!-- <ion-icon item-start name="md-power"></ion-icon> -->
             Log Out
           </button>
         </ion-list>

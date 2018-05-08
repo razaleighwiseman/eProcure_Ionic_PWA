@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, AlertController } from 'ionic-angular';
 import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ServiceProvider } from '../../providers/service/service';
 import { regexValidators } from '../validators/validator';
 
-import {User} from '../../models/user.model';
+import { User } from '../../models/user.model';
 
 /**
  * Generated class for the SignupPage page.
@@ -25,7 +25,8 @@ export class SignupPage {
   model: any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public splitPane: SplitPaneProvider,
-    public menuCtrl: MenuController, public _form: FormBuilder, public _data: ServiceProvider) {
+    public menuCtrl: MenuController, public _form: FormBuilder, public _data: ServiceProvider,
+    private alertCtrl: AlertController) {
 
     this.signUpForm = this._form.group({
       email: [
@@ -59,14 +60,30 @@ export class SignupPage {
     });
   }
 
-  createAcc(){
+  createAcc() {
     console.log(this.model);
-    this._data.createUserHttp(this.model).subscribe(resp =>{
+    this._data.createUserHttp(this.model).subscribe(resp => {
       console.log(resp);
       if (resp['success']) {
-        this.navCtrl.setRoot('LoginPage');
+        this.presentConfirm()
       }
     });
+  }
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'User Sign Up Successful!',
+      message: 'Click OK and you will be directed to login page..',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.navCtrl.setRoot('LoginPage');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   ionViewDidLoad() {

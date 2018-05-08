@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
 
 /**
- * Generated class for the ListPage page.
+ * Generated class for the UserProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,21 +11,24 @@ import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
 
 @IonicPage()
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html',
+  selector: 'page-user-profile',
+  templateUrl: 'user-profile.html',
 })
-export class ListPage {
+export class UserProfilePage {
+
+  tab: string ='company';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public splitPane: SplitPaneProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListPage');
-  }
   ionViewWillEnter() {
-    // Disable the split plane in this page
+    // Enable the split plane in this page
     this.splitPane.setSplitPane(true);
     
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad UserProfilePage');
   }
 
 }
