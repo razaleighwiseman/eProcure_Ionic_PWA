@@ -35,14 +35,14 @@
   
   <ion-content padding>
   
-    <div [ngSwitch]="tab">
+    <div [ngSwitch]="tab" >
       <ion-list *ngSwitchCase="'company'">
         <div>
           <div>
             <h3>Company Detail</h3>
           </div>
           <ion-row>
-            <ion-col col6>
+            <ion-col col-sm-5 padding>
               <ion-item>
                 <ion-label color="dark" stacked>Company Name :</ion-label>
                 <ion-input type="text"></ion-input>
@@ -63,7 +63,7 @@
                 </ion-select>
               </ion-item>
             </ion-col>
-            <ion-col col6>
+            <ion-col col-sm-5 padding>
               <ion-item>
                 <ion-label color="dark" stacked>GST Registratiton No. :</ion-label>
                 <ion-input type="text"></ion-input>
@@ -91,7 +91,7 @@
         <h3>Purchasing Detail</h3>
         <div>
           <ion-row>
-            <ion-col col6>
+            <ion-col col-sm-5 padding>
               <ion-item>
                 <ion-label color="dark" stacked>*Currency</ion-label>
                 <ion-select [(ngModel)]="gender">
@@ -119,7 +119,7 @@
               </ion-item>
               <br>
             </ion-col>
-            <ion-col col6>
+            <ion-col col-sm-5 padding>
               <ion-item>
                 <ion-label color="dark" stacked>Freight Terms :</ion-label>
                 <ion-input type="text"></ion-input>
@@ -152,7 +152,7 @@
         <h3>Payment Detail</h3>
         <div>
           <ion-row>
-            <ion-col col6>
+            <ion-col col-sm-5 padding>
               <ion-item>
                 <ion-label color="dark" stacked>Bank :</ion-label>
                 <ion-input type="text"></ion-input>
@@ -217,7 +217,7 @@
             <h3>General Information</h3>
           </div>
           <ion-row>
-            <ion-col col6>
+            <ion-col col-sm-5 padding>
               <ion-item>
                 <ion-label color="dark" stacked>Customer Contact</ion-label>
                 <ion-select [(ngModel)]="gender">
@@ -234,7 +234,7 @@
                 <ion-input type="text"></ion-input>
               </ion-item>
             </ion-col>
-            <ion-col col6>
+            <ion-col col-sm-5 padding>
               <ion-item>
                 <ion-label color="dark" stacked>State/Province :</ion-label>
                 <ion-input type="text"></ion-input>
@@ -260,12 +260,12 @@
             <h3>Remit To Information</h3>
           </div>
           <ion-row>
-            <ion-item>
+            <ion-item >
               <ion-label color="dark" stacked>Same as General Information?</ion-label>
               <ion-checkbox [(ngModel)]="p"></ion-checkbox>
             </ion-item>
             <br>
-            <ion-col col6>
+            <ion-col col-sm-5 padding>
               <ion-item>
                 <ion-label color="dark" stacked>Customer Contact</ion-label>
                 <ion-select [(ngModel)]="gender">
@@ -282,7 +282,7 @@
                 <ion-input type="text"></ion-input>
               </ion-item>
             </ion-col>
-            <ion-col col6>
+            <ion-col col-sm-5 padding>
               <ion-item>
                 <ion-label color="dark" stacked>State/Province :</ion-label>
                 <ion-input type="text"></ion-input>

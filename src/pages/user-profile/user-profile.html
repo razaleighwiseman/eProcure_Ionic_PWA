@@ -13,10 +13,110 @@
     <ion-title>Profile</ion-title>
   </ion-navbar>
 
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="tab">
+      <ion-segment-button value="user">
+        User Profile
+      </ion-segment-button>
+      <ion-segment-button value="password">
+        Change Password
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
 </ion-header>
 
 
 <ion-content padding>
+  <div [ngSwitch]="tab">
 
+    <ion-list *ngSwitchCase="'user'">
+      <div>
+        <ion-row>
+          <ion-col col-sm-5 padding>
+            <div>
+              <h3>User Information</h3>
+            </div>
+            <ion-item>
+              <ion-label color="dark" stacked>First Name :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Last Name :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>NRIC/Passport :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Nationality/Region </ion-label>
+              <ion-select [(ngModel)]="gender">
+                <ion-option value="f">Female</ion-option>
+                <ion-option value="m">Male</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Email Address :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Contact No :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Address :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-sm-5 padding>
+            <div>
+              <h3>Company General Information</h3>
+            </div>
+            <ion-item>
+              <ion-label color="dark" stacked>Company Name :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Company Registratiton No. :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <br>
+          </ion-col>
+          <ion-col col-sm-5 padding>
+            <button ion-button block color="mytheme">
+              Save
+            </button>
+          </ion-col>
 
+        </ion-row>
+      </div>
+
+    </ion-list>
+    <ion-list *ngSwitchCase="'password'">
+      <div>
+        <ion-row>
+          <ion-col col-sm-5 padding>
+            <ion-item>
+              <ion-label color="dark" stacked>Current Password:</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>New Password:</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Cormfirm Password:</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+            <br>
+            <button ion-button block color="mytheme">
+              Update Password
+            </button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-list>
+
+  </div>
 </ion-content>

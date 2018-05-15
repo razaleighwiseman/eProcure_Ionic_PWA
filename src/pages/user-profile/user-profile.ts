@@ -15,7 +15,7 @@ import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
   templateUrl: 'user-profile.html',
 })
 export class UserProfilePage {
-
+  tab: string ='user';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public splitPane: SplitPaneProvider) {
   }
