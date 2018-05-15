@@ -13,18 +13,17 @@ import { ServiceProvider } from '../providers/service/service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: string = 'LoginPage';
+  rootPage: string = '';
 
   pages: Array<{ title: string, name: string, component: any }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public splitPane: SplitPaneProvider,
     public _data: ServiceProvider) {
     this.initializeApp();
-
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', name: 'HomePage', component: 'HomePage' },
       { title: 'Profile', name: 'UserProfilePage', component: 'UserProfilePage' },
+      { title: 'Company Registration', name: 'Company Registration', component: 'CompanyRegistrationPage' },
       { title: 'Quotation', name: 'QuotationPage', component: 'QuotationPage' },
       { title: 'Purchase Order', name: 'PurchaseOrderPage', component: 'PurchaseOrderPage' },
       { title: 'Invoice', name: 'InvoicePage', component: 'InvoicePage' }
@@ -33,6 +32,15 @@ export class MyApp {
   }
 
   initializeApp() {
+    this._data.getUserToken().then(resp => {
+      console.log(resp)
+      if (resp != null) {
+        console.log("not null")
+        this.rootPage = 'UserProfilePage';
+      }else{
+        this.rootPage = 'LoginPage';
+      }
+    });
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -58,10 +66,11 @@ export class MyApp {
   }
 
   logOut() {
-    this._data.getUserCredentials().then(token => {
+    this._data.getUserToken().then(token => {
+      //console.log(token)
       this._data.userLogOutHttp(token).subscribe(resp => {
         if (resp['success']) {
-          this._data.deleteUserCredential().then(() => {
+          this._data.deleteUserToken().then(() => {
             this.nav.setRoot('LoginPage');
           })
         }

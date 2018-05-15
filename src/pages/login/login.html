@@ -9,14 +9,14 @@
             <div class="login-panel" padding>
               <ion-list inset>
                 <ion-item>
-                  <ion-label floating>E-mail</ion-label>
+                  <ion-label stacked>E-mail</ion-label>
                   <ion-input type="email" [formControl]="credentialsForm.controls['email']" ></ion-input>
                 </ion-item>
                 <div *ngIf="!credentialsForm.controls.email.valid && credentialsForm.controls.email.dirty" class="validator-error">
                   Please enter a valid email.
                 </div>
                 <ion-item>
-                  <ion-label floating>Password</ion-label>
+                  <ion-label stacked>Password</ion-label>
                   <ion-input type="password" [formControl]="credentialsForm.controls['password']"></ion-input>
                 </ion-item>
                 <div *ngIf="!credentialsForm.controls.password.valid && credentialsForm.controls.password.dirty" class="validator-error">
@@ -24,9 +24,9 @@
                 </div>
               </ion-list>
               <span>
-                <p ion-text color='danger'>
+                <div class="validator-error2">
                   {{error}}
-                </p>
+                </div>
               </span>
               <div padding>
                 <button ion-button block color="mytheme" [disabled]="!credentialsForm.valid" (click)="logIn()">

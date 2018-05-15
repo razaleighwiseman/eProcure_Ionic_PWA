@@ -23,6 +23,9 @@ import { SplitPaneProvider } from '../providers/split-pane/split-pane';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    // IonicModule.forRoot(MyApp, {
+    //   locationStrategy: 'path'
+    // }),
     IonicStorageModule.forRoot(),
     HttpClientModule, HttpModule
   ],

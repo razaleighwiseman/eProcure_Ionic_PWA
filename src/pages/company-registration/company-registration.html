@@ -1,0 +1,316 @@
+<!--
+  Generated template for the UserProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="third">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Company Registration</ion-title>
+    </ion-navbar>
+  
+    <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="tab">
+        <ion-segment-button value="company">
+          Company
+        </ion-segment-button>
+        <ion-segment-button value="contact">
+          Contact
+        </ion-segment-button>
+        <ion-segment-button value="addresses">
+          Addresses
+        </ion-segment-button>
+        <ion-segment-button value="bussines">
+          Bussiness Area
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+    <div [ngSwitch]="tab">
+      <ion-list *ngSwitchCase="'company'">
+        <div>
+          <div>
+            <h3>Company Detail</h3>
+          </div>
+          <ion-row>
+            <ion-col col6>
+              <ion-item>
+                <ion-label color="dark" stacked>Company Name :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Customer# :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Homepage :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Company type</ion-label>
+                <ion-select [(ngModel)]="gender">
+                  <ion-option value="f">Female</ion-option>
+                  <ion-option value="m">Male</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col col6>
+              <ion-item>
+                <ion-label color="dark" stacked>GST Registratiton No. :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Company Registratiton No. :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>GST Registratiton No. :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Technical?</ion-label>
+                <ion-checkbox [(ngModel)]="pepperoni"></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Non-Technical?</ion-label>
+                <ion-checkbox [(ngModel)]="p"></ion-checkbox>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </div>
+  
+        <h3>Purchasing Detail</h3>
+        <div>
+          <ion-row>
+            <ion-col col6>
+              <ion-item>
+                <ion-label color="dark" stacked>*Currency</ion-label>
+                <ion-select [(ngModel)]="gender">
+                  <ion-option value="f">Female</ion-option>
+                  <ion-option value="m">Male</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Gst Code</ion-label>
+                <ion-select [(ngModel)]="gender">
+                  <ion-option value="f">Female</ion-option>
+                  <ion-option value="m">Male</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Gst Exempt Code</ion-label>
+                <ion-select [(ngModel)]="gender">
+                  <ion-option value="f">Female</ion-option>
+                  <ion-option value="m">Male</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Gst Exempt No. :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <br>
+            </ion-col>
+            <ion-col col6>
+              <ion-item>
+                <ion-label color="dark" stacked>Freight Terms :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>FOB point :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Ship via :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Bumi status?</ion-label>
+                <ion-checkbox [(ngModel)]="p"></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>In House?</ion-label>
+                <ion-checkbox [(ngModel)]="p"></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Bumi Cert No. :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <br>
+            </ion-col>
+          </ion-row>
+        </div>
+  
+        <h3>Payment Detail</h3>
+        <div>
+          <ion-row>
+            <ion-col col6>
+              <ion-item>
+                <ion-label color="dark" stacked>Bank :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Bank reference :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>DUNS# :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <br>
+            </ion-col>
+          </ion-row>
+        </div>
+  
+      </ion-list>
+  
+      <ion-list *ngSwitchCase="'contact'">
+        <div>
+          <div class="col">
+            <button ion-button>Add</button>
+          </div>
+          <div class="row header">
+            <div class="col"></div>
+            <div class="col">Contact No.</div>
+            <div class="col">Phone</div>
+            <div class="col">Email</div>
+            <div class="col"></div>
+          </div>
+          <div class="row" *ngFor="let data of data">
+            <div class="col">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </div>
+            <div class="col">
+              <ion-item>
+                <ion-input type="text" value="{{data.name}}"></ion-input>
+              </ion-item>
+            </div>
+            <div class="col">
+              <ion-item>
+                <ion-input type="text" value="{{data.contact}}"></ion-input>
+              </ion-item>
+            </div>
+            <div class="col">
+              <ion-item>
+                <ion-input type="text" value="{{data.email}}"></ion-input>
+              </ion-item>
+            </div>
+            <div class="col">
+              <ion-icon name="trash"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </ion-list>
+  
+  
+      <ion-list *ngSwitchCase="'addresses'">
+        <div>
+          <div>
+            <h3>General Information</h3>
+          </div>
+          <ion-row>
+            <ion-col col6>
+              <ion-item>
+                <ion-label color="dark" stacked>Customer Contact</ion-label>
+                <ion-select [(ngModel)]="gender">
+                  <ion-option value="f">Female</ion-option>
+                  <ion-option value="m">Male</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Address :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>City :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col6>
+              <ion-item>
+                <ion-label color="dark" stacked>State/Province :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Zip/Postal Code :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Phone :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Company Fax :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </div>
+  
+        <div>
+          <div>
+            <h3>Remit To Information</h3>
+          </div>
+          <ion-row>
+            <ion-item>
+              <ion-label color="dark" stacked>Same as General Information?</ion-label>
+              <ion-checkbox [(ngModel)]="p"></ion-checkbox>
+            </ion-item>
+            <br>
+            <ion-col col6>
+              <ion-item>
+                <ion-label color="dark" stacked>Customer Contact</ion-label>
+                <ion-select [(ngModel)]="gender">
+                  <ion-option value="f">Female</ion-option>
+                  <ion-option value="m">Male</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Address :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>City :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col6>
+              <ion-item>
+                <ion-label color="dark" stacked>State/Province :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Zip/Postal Code :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Phone :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" stacked>Company Fax :</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </div>
+  
+      </ion-list>
+  
+      <ion-list *ngSwitchCase="'bussines'">
+        <ion-card>
+          <p>Bussiness Area</p>
+        </ion-card>
+      </ion-list>
+  
+    </div>
+  
+  </ion-content>

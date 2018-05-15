@@ -56,20 +56,6 @@ export class LoginPage {
     this.menuCtrl.swipeEnable(true);
   }
 
-  ngOnInit() {
-    this.checkUserLogin();
-
-  }
-
-  checkUserLogin() {
-    this._data.getUserCredentials().then(resp => {
-      console.log(resp)
-      if (resp) {
-        this.navCtrl.setRoot('HomePage');
-      }
-    });
-  }
-
   logIn() {
     if (this.credentialsForm.valid) {
       var email =this.credentialsForm.controls['email'].value;
@@ -78,7 +64,7 @@ export class LoginPage {
       this._data.userSignInHttp({ 'email': email, 'password': password }).subscribe(resp => {
         if (resp) {
           console.log(resp['token']);
-          this._data.storeUserCredentials(resp['token'])
+          this._data.storeUserToken(resp['token'])
           this.navCtrl.setRoot('HomePage');
         }
       }, err => {

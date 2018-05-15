@@ -41,6 +41,13 @@ page-login {
   .validator-error {
     color: color($colors, danger);
     padding-top: 8px;
+    font-size: 12px;
+  }
+
+  .validator-error2{
+    color: color($colors, danger);
+    font-size: 12px;
+    text-align: center;   
   }
 
 

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject'
 import { Headers, RequestOptions } from '@angular/http';
 import {User} from '../../models/user.model'
 
@@ -15,10 +16,11 @@ const httpOptions = {
   })
 };
 
-var token;
-
 @Injectable()
 export class ServiceProvider {
+
+  private tokens = new BehaviorSubject<any>(String);
+  token = this.tokens.asObservable();
 
 
   constructor(public http: HttpClient, private storage: Storage) {
@@ -26,29 +28,31 @@ export class ServiceProvider {
   }
 
   createUserHttp(user:User) {
-    return this.http.post('http://localhost:3000/users', JSON.stringify(user), httpOptions);
+    return this.http.post('http://192.168.0.74:3000/users', JSON.stringify(user), httpOptions);
   }
 
   userSignInHttp(param) {
-    return this.http.post('http://localhost:3000/users/login', JSON.stringify(param), httpOptions);
+    return this.http.post('http://192.168.0.74:3000/users/login', JSON.stringify(param), httpOptions);
   }
 
   userLogOutHttp(token: string) {
     console.log(token);
     httpOptions.headers = httpOptions.headers.set('x-auth', token);
     console.log(httpOptions);
-    return this.http.delete("http://localhost:3000/users/logout", httpOptions);
+    return this.http.delete("http://192.168.0.74:3000/users/logout", httpOptions);
   }
 
-  storeUserCredentials(token) {
+  storeUserToken(token) {
     this.storage.set("token", token);
   }
 
-  getUserCredentials() {
-    return this.storage.get('token');
+  getUserToken() {
+    var token =this.storage.get('token');
+    this.tokens.next(token);
+    return token;
   }
 
-  deleteUserCredential() {
+  deleteUserToken() {
     return new Promise((resolve, reject) => {
       this.storage.clear().then((success) => {
         resolve();
