@@ -60,10 +60,10 @@ export class LoginPage {
     if (this.credentialsForm.valid) {
       var email =this.credentialsForm.controls['email'].value;
       var password = this.credentialsForm.controls['password'].value;
-      console.log(email, password)
+      
       this._data.userSignInHttp({ 'email': email, 'password': password }).subscribe(resp => {
         if (resp) {
-          console.log(resp['token']);
+          console.log(resp);
           this._data.storeUserToken(resp['token'])
           this.navCtrl.setRoot('HomePage');
         }

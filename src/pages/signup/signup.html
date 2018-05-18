@@ -1,45 +1,45 @@
 <ion-content>
   <ion-grid fixed no-padding>
-    <ion-row align-items-stretch>
-      <ion-col col-12 col-md-6 align-self-stretch align-self-center>
-        <ion-card>
-          <form [formGroup]="signUpForm" >
-            <div class="login-panel">
-              <ion-list inset>
-                <ion-item>
-                  <ion-label floating>E-mail</ion-label>
-                  <ion-input type="email"  [(ngModel)]="model.email" [formControl]="signUpForm.controls['email']"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label floating>Name</ion-label>
-                  <ion-input type="text" [(ngModel)]="model.name" [formControl]="signUpForm.controls['name']"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label floating>NRIC/Passport</ion-label>
-                  <ion-input type="text"[(ngModel)]="model.nric" [formControl]="signUpForm.controls['nric']" ></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label floating>Contact No.</ion-label>
-                  <ion-input type="text" [(ngModel)]="model.contact" [formControl]="signUpForm.controls['contact']"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label floating>Password</ion-label>
-                  <ion-input type="password" [(ngModel)]="model.password" [formControl]="signUpForm.controls['password']"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label floating>Confirm Password</ion-label>
-                  <ion-input type="password" [(ngModel)]="model.password" [formControl]="signUpForm.controls['password']"></ion-input>
-                </ion-item>
-              </ion-list>
-              <div padding>
-                <button ion-button block color="mytheme" [disabled]="!signUpForm.valid" (click)="createAcc()">
-                  Create Account
-                </button>
-              </div>
+    <form [formGroup]="signUpForm">
+      <ion-card>
+        <ion-row>
+          <ion-col padding>
+            <ion-item>
+              <ion-label floating>E-mail</ion-label>
+              <ion-input type="email" [(ngModel)]="model.email" [formControl]="signUpForm.controls['email']"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>First Name</ion-label>
+              <ion-input type="text" [(ngModel)]="model.firstName" [formControl]="signUpForm.controls['firstName']"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Last Name</ion-label>
+              <ion-input type="text" [(ngModel)]="model.lastName" [formControl]="signUpForm.controls['lastName']"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>NRIC/Passport</ion-label>
+              <ion-input type="text" [(ngModel)]="model.nric" [formControl]="signUpForm.controls['nric']"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Contact No.</ion-label>
+              <ion-input type="text" [(ngModel)]="model.contact" [formControl]="signUpForm.controls['contact']"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" [(ngModel)]="model.password" [formControl]="signUpForm.controls['password']"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Confirm Password</ion-label>
+              <ion-input type="password" [(ngModel)]="model.password" [formControl]="signUpForm.controls['password']"></ion-input>
+            </ion-item>
+            <div padding>
+              <button ion-button block color="mytheme" [disabled]="!signUpForm.valid" (click)="createAcc()">
+                Create Account
+              </button>
             </div>
-          </form>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </form>
   </ion-grid>
 </ion-content>

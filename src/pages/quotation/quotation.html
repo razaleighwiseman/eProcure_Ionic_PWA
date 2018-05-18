@@ -7,15 +7,484 @@
 <ion-header>
 
   <ion-navbar color="third">
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-      </button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Quotation</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="tab">
+      <ion-segment-button value="list">
+        List
+      </ion-segment-button>
+      <ion-segment-button value="rfq">
+        RFQ
+      </ion-segment-button>
+      <ion-segment-button value="rfqline">
+        RFQ Line
+      </ion-segment-button>
+      <ion-segment-button value="quotation">
+        Quotation
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <div [ngSwitch]="tab">
+
+    <ion-list *ngSwitchCase="'list'">
+      <ion-card class="card-1">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-md-2>
+              <ion-item>
+                <ion-label color="dark" stacked>RFQ</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-md-4>
+              <ion-item>
+                <ion-label color="dark" stacked>Description</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-md-2>
+              <ion-item>
+                <ion-label color="dark" stacked>Required Date</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-md-2>
+              <ion-item>
+                <ion-label color="dark" stacked>Reply Date</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-md-2>
+              <ion-item>
+                <ion-label color="dark" stacked>Closed Date</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+
+      <div class="row" *ngFor="let data of data" (click)="goToDetail(data.rfq)">
+        <ion-card>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-md-2>
+                {{data.rfq}}
+              </ion-col>
+              <ion-col col-md-4>
+                {{data.description}}
+              </ion-col>
+              <ion-col col-md-2>
+                {{data.required}}
+              </ion-col>
+              <ion-col col-md-2>
+                {{data.reply}}
+              </ion-col>
+              <ion-col col-md-2>
+                {{data.close}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'rfq'">
+      <div>
+        <ion-row>
+          <ion-col col-sm-5 padding>
+            <div>
+              <h3>Detail</h3>
+            </div>
+            <ion-item>
+              <ion-label color="dark" stacked>RFQ No. :</ion-label>
+              <ion-input type="text" [readonly]="true" value=""></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Description :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Requested By :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Required Date :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Printed Date :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Reply Date :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Closed Date :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Status :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <br>
+          </ion-col>
+          <ion-col col-sm-5 padding>
+            <div>
+              <h3>Terms</h3>
+            </div>
+            <ion-item>
+              <ion-label color="dark" stacked>Freight Term :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Ship Via :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Payment Terms :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>FOB Points :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <br>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div>
+        <ion-row>
+          <ion-col col-sm-5 padding>
+            <div>
+              <h3>Ship to</h3>
+            </div>
+            <ion-item>
+              <ion-label color="dark" stacked>Ship To :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Address :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>State/Province :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Zip/Postal Code :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Attention :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <br>
+          </ion-col>
+          <ion-col col-sm-5 padding>
+            <div>
+              <h3>Reply to</h3>
+            </div>
+            <ion-item>
+              <ion-label color="dark" stacked>Ship To :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Address :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>State/Province :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Zip/Postal Code :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Attention :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <br>
+          </ion-col>
+        </ion-row>
+      </div>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'rfqline'">
+      <div>
+        <ion-row>
+          <ion-col col-sm-5 padding>
+            <ion-item>
+              <ion-label color="dark" stacked>RFQ No :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Description :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <br>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div>
+        <div class="div1">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-md-1>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-col>
+              <ion-col col-md-2>
+                <ion-item>
+                  <ion-label color="dark" stacked>Line</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-md-2>
+                <ion-item>
+                  <ion-label color="dark" stacked>Item</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-md-5>
+                <ion-item>
+                  <ion-label color="dark" stacked>Description</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-md-1>
+                <ion-item>
+                  <ion-checkbox [(ngModel)]="p"></ion-checkbox>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="div2">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-sm-5 padding>
+                <ion-item>
+                  <ion-label color="dark" stacked>Line :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Line Type :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Item :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Description :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Quantity :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Manufacturer :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Model :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Award Vendor :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Award Date :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <br>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </ion-list>
+
+
+    <ion-list *ngSwitchCase="'quotation'">
+      <div>
+        <ion-row>
+          <ion-col col-sm-5 padding>
+            <ion-item>
+              <ion-label color="dark" stacked>RFQ No :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="dark" stacked>Description :</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <br>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div>
+        <div class="div1">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-md-1>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-col>
+              <ion-col col-md-1.5>
+                <ion-item>
+                  <ion-label color="dark" stacked>Line</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-md-1.5>
+                <ion-item>
+                  <ion-label color="dark" stacked>Item</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-md-3>
+                <ion-item>
+                  <ion-label color="dark" stacked>Description</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-md-1.5>
+                <ion-item>
+                  <ion-label color="dark" stacked>Quantiy</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-md-1.5>
+                <ion-item>
+                  <ion-label color="dark" stacked>Currency Cost</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-md-1.5>
+                <ion-item>
+                  <ion-label color="dark" stacked>Line Cost</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <div class="div2">
+          <ion-grid>
+            <div>
+              <h5>Line Item</h5>
+            </div>
+            <ion-row>
+              <ion-col col-sm-5 padding>
+                <ion-item>
+                  <ion-label color="dark" stacked>Line :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Item :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Description :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <br>
+              </ion-col>
+              <ion-col col-sm-5 padding>
+                <ion-item>
+                  <ion-label color="dark" stacked>Line Type :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Manufacturer :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Model :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <br>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-grid>
+            <div>
+              <h5>Quantity and Cost</h5>
+            </div>
+            <ion-row>
+              <ion-col col-sm-5 padding>
+                <ion-item>
+                  <ion-label color="dark" stacked>*Currency</ion-label>
+                  <ion-select [(ngModel)]="gender">
+                    <ion-option value="f">Female</ion-option>
+                    <ion-option value="m">Male</ion-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Quantity :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Unit Cost :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Line Cost :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <br>
+              </ion-col>
+              <ion-col col-sm-5 padding>
+                <ion-item>
+                  <ion-label color="dark" stacked>*GST Code</ion-label>
+                  <ion-select [(ngModel)]="gender">
+                    <ion-option value="f">Female</ion-option>
+                    <ion-option value="m">Male</ion-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>GST :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Cost with GST :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Entered :</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="dark" stacked>Entered Date:</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+                <br>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </ion-list>
+
+
+  </div>
 
 </ion-content>

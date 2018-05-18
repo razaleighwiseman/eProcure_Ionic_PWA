@@ -15,6 +15,25 @@ import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
   templateUrl: 'quotation.html',
 })
 export class QuotationPage {
+  tab: string ='list';
+
+  data = [
+    {
+        rfq: "RFQ123",
+        description: "TO FABRICATE, SUPPLY AND INSTALL MILL PF PIPE FOR GF3",
+        required: "12/5/2018",
+        reply: "12/7/2018",
+        close: "5/8/2018"
+    },
+    {
+      rfq: "RFQ7283",
+      description: "MRP-CM-0313: TO PURCHASE WIRE ROPE FOR FWES",
+      required: "23/03/2018",
+      reply: "20/04/2018",
+      close: "15/5/2018"
+  }
+]
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public splitPane: SplitPaneProvider) {
   }
@@ -26,6 +45,11 @@ export class QuotationPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuotationPage');
+  }
+
+  goToDetail(r){
+    console.log(r);
+    this.tab='rfq'
   }
 
 }

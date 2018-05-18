@@ -41,7 +41,12 @@ export class SignupPage {
           Validators.required
         ])
       ],
-      name: [
+      firstName: [
+        '', Validators.compose([
+          Validators.required
+        ])
+      ],
+      lastName: [
         '', Validators.compose([
           Validators.required
         ])
