@@ -31,23 +31,23 @@
   <div [ngSwitch]="tab">
 
     <ion-list *ngSwitchCase="'user'">
-      <div>
+      <div *ngIf='user'>
         <ion-row>
           <ion-col col-sm-5 padding>
             <div class="div1">
               <h3>User Information</h3>
             </div>
-            <ion-item>
+            <ion-item >
               <ion-label color="dark" stacked>First Name :</ion-label>
-              <ion-input type="text" ></ion-input>
+              <ion-input type="text" value='{{user.firstName}}' ></ion-input>
             </ion-item>
             <ion-item>
               <ion-label color="dark" stacked>Last Name :</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" value='{{user.lastName}}' ></ion-input>
             </ion-item>
             <ion-item>
               <ion-label color="dark" stacked>NRIC/Passport :</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" value='{{user.nric}}'></ion-input>
             </ion-item>
             <ion-item>
               <ion-label color="dark" stacked>Nationality/Region </ion-label>
@@ -58,11 +58,11 @@
             </ion-item>
             <ion-item>
               <ion-label color="dark" stacked>Email Address :</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" value='{{user.email}}'></ion-input>
             </ion-item>
             <ion-item>
               <ion-label color="dark" stacked>Contact No :</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" value='{{user.contact}}'></ion-input>
             </ion-item>
             <ion-item>
               <ion-label color="dark" stacked>Address :</ion-label>
@@ -84,7 +84,7 @@
             <br>
           </ion-col>
           <ion-col col-sm-5 padding>
-            <button ion-button block color="mytheme">
+            <button ion-button block color="mytheme" (click)='updateUser()'>
               Save
             </button>
           </ion-col>

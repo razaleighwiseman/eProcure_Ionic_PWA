@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SplitPaneProvider } from '../../providers/split-pane/split-pane';
 import { User } from '../../models/user.model';
@@ -18,7 +18,7 @@ import { ServiceProvider } from '../../providers/service/service';
 })
 export class UserProfilePage {
   tab: string = 'user';
-  user: User;
+ @Input() user: User;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public splitPane: SplitPaneProvider,
     public _data: ServiceProvider) {
@@ -27,9 +27,9 @@ export class UserProfilePage {
   ngOnInit() {
 
     this._data.getUserToken().then(token => {
-       this._data.getUserDetailHttp(token).subscribe(resp =>{
-         console.log
-          this.user = resp;
+       this._data.getUserDetailHttp(token).subscribe((data:User) =>{
+          this.user = data;
+          console.log(this.user)
        });
     })
    
@@ -44,6 +44,10 @@ export class UserProfilePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserProfilePage');
+  }
+
+  updateUser(){
+    console.log(this.user);
   }
 
 }

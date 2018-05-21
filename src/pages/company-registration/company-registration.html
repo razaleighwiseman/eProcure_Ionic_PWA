@@ -155,7 +155,7 @@
       <div class="div1">
         <h3>Payment Detail</h3>
       </div>
-      
+
       <div>
         <ion-row>
           <ion-col col-sm-5 padding>
@@ -219,7 +219,7 @@
 
     <ion-list *ngSwitchCase="'addresses'">
       <div>
-        <div  class="div1">
+        <div class="div1">
           <h3>General Information</h3>
         </div>
         <ion-row>
@@ -262,7 +262,7 @@
       </div>
 
       <div>
-        <div  class="div1">
+        <div class="div1">
           <h3>Remit To Information</h3>
         </div>
         <ion-row>
@@ -313,10 +313,10 @@
 
     <ion-list *ngSwitchCase="'bussines'">
       <div>
+        <div class="div1">
+          <h3>Vendor Category</h3>
+        </div>
         <div>
-          <div class="col">
-            <button ion-button>Add</button>
-          </div>
           <div class="row header">
             <div class="col">Vendor Category</div>
             <div class="col">Description</div>
@@ -340,7 +340,43 @@
               <ion-icon name="trash"></ion-icon>
             </div>
           </div>
+          <div class="col">
+            <button ion-button>Add</button>
+          </div>
         </div>
+
+        <div>
+          <div class="div1">
+            <h3>Field Code</h3>
+          </div>
+          <div class="row header">
+            <div class="col">Field Code</div>
+            <div class="col">Description</div>
+            <div class="col"></div>
+          </div>
+          <div class="row" *ngFor="let data of data">
+            <div class="col">
+              <ion-item>
+                <ion-select [(ngModel)]="gender">
+                  <ion-option value="f">Female</ion-option>
+                  <ion-option value="m">Male</ion-option>
+                </ion-select>
+              </ion-item>
+            </div>
+            <div class="col">
+              <ion-item>
+                <ion-input type="text" value="{{data.contact}}"></ion-input>
+              </ion-item>
+            </div>
+            <div class="col">
+              <ion-icon name="trash"></ion-icon>
+            </div>
+          </div>
+          <div class="col">
+            <button ion-button>Add</button>
+          </div>
+        </div>
+
 
       </div>
     </ion-list>

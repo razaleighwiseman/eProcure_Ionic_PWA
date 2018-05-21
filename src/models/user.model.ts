@@ -8,6 +8,7 @@ export class User implements Deserializable {
     lastName: string;
     contact: number;
     nric: number;
+    nationality: string;
     address: string
 
     deserialize(input: any) {
